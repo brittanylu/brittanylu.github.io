@@ -391,11 +391,10 @@ if (!matchMedia("(prefers-reduced-motion: reduce)").matches && SITE.typed.length
 }
 $("#intro").innerHTML = SITE.intro.map(p => `<p class="b">${esc(p)}</p>`).join("");
 const pic = $("#pic");
-pic.innerHTML = (SITE.photo ? `<img src="${esc(SITE.photo)}" alt="${esc(SITE.name)}">` : "your photo here") +
+pic.innerHTML = (SITE.photo ? `<img src="${esc(SITE.photo)}" alt="${esc(SITE.name)}">` : "add a headshot") +
   `<svg class="sticker doodle" viewBox="0 0 60 60" aria-hidden="true"><path d="M30 4l7 15 16 2-12 11 3 16-14-8-14 8 3-16L7 21l16-2z"/></svg>`;
 pic.classList.toggle("has", !!SITE.photo);
 /* empty spots stay hidden until there is something to show */
-if (!SITE.photo) { pic.hidden = true; document.querySelector(".hello").classList.add("nopic"); }
 const ext = [{ label: "linkedin ↗", url: SITE.linkedin }, ...(SITE.resume ? [{ label: "résumé ↗", url: SITE.resume }] : [])];
 const pillLinks = ext.map(l => `<a class="pill" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("");
 $("#pills").innerHTML = `<a class="pill" href="#projects">my projects ↓</a>` + pillLinks + `<a class="pill" href="#contact">email</a>`;
