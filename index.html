@@ -101,7 +101,33 @@ main{display:grid;gap:20px;padding-block:32px 40px}
 .thumb b{position:absolute;left:12px;bottom:10px;font-family:var(--serif);font-size:20px;color:var(--fg);font-weight:400;letter-spacing:-.02em}
 .thumb.ico{display:grid;place-items:center;background-color:var(--wash);background-image:radial-gradient(var(--speck) 1px,transparent 1.5px);background-size:12px 12px;border:1.5px solid var(--butter)}
 .thumb.ico svg{width:64%;height:64%;color:var(--fg);transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
-.proj:hover .thumb.ico svg{transform:rotate(-6deg) scale(1.07)}
+.proj:hover .thumb.ico svg{transform:scale(1.06)}
+.thumb.ico svg *{transform-box:view-box}
+.a-ball{transform-origin:31px 54px}.a-shadow{transform-origin:31px 59px}.a-swing{transform-origin:32px 32px}.a-nod{transform-origin:32px 44px}
+.a-blink{transform-origin:32px 23px}.a-spin{transform-origin:32px 33px}.a-arm{transform-origin:23px 47px}.a-claw{transform-origin:40px 17px}
+.a-spark{transform-box:fill-box!important;transform-origin:center}
+@keyframes ico-bounce{0%,100%{transform:translateY(0) scale(1,1)}35%{transform:translateY(-12px) scale(.96,1.04)}60%{transform:translateY(0) scale(1.1,.88)}75%{transform:translateY(-4px)}}
+@keyframes ico-shadow{0%,100%,60%{transform:scale(1);opacity:1}35%{transform:scale(.6);opacity:.5}}
+@keyframes ico-swing{0%,100%{transform:rotate(0)}25%{transform:rotate(-16deg)}60%{transform:rotate(10deg)}}
+@keyframes ico-nod{0%,100%{transform:rotate(0)}30%{transform:rotate(-9deg)}65%{transform:rotate(7deg)}}
+@keyframes ico-pulse{0%,100%{opacity:1}50%{opacity:.15}}
+@keyframes ico-alert{0%,100%{transform:translateY(0) scale(1)}30%{transform:translateY(-4px) scale(1.15)}50%{transform:translateY(0) scale(1)}70%{transform:translateY(-2px) scale(1.08)}}
+@keyframes ico-spin{to{transform:rotate(360deg)}}
+@keyframes ico-reach{0%,100%{transform:rotate(0)}50%{transform:rotate(-14deg)}}
+@keyframes ico-grab{0%,40%,100%{transform:rotate(0)}55%,80%{transform:rotate(18deg)}}
+@keyframes ico-twinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.5) rotate(90deg)}}
+:is(.proj:hover,.thumb.ico.play) .a-ball{animation:ico-bounce .8s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-shadow{animation:ico-shadow .8s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-swing{animation:ico-swing 1.1s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-nod{animation:ico-nod 1s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-pulse{animation:ico-pulse .9s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-pulse.d2{animation-delay:.3s}
+:is(.proj:hover,.thumb.ico.play) .a-blink{animation:ico-alert 1s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-spin{animation:ico-spin 2.4s linear infinite}
+:is(.proj:hover,.thumb.ico.play) .a-arm{animation:ico-reach 1.4s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-claw{animation:ico-grab 1.4s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-spark{animation:ico-twinkle 1.2s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.thumb.ico svg *{animation:none!important}}
 .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .gallery > img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--card);cursor:zoom-in;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
 .gallery > img:hover{transform:translateY(-4px) rotate(-1deg)}
@@ -366,7 +392,7 @@ const SITE = {
   more: [
     { title: "Anya the Mini-CEO", short: "A 26-page children's book I wrote and co-illustrated, self-published on Amazon.", year: "2025", link: "https://www.amazon.com/dp/B0FWC9SHBZ" },
     { title: "SolaraTech", short: "A solar panel business pitch for Wharton Essentials of Entrepreneurship.", year: "2025", link: "https://canva.link/solaratech-group-8" },
-    { title: "TurtleCases.Co", short: "Hand-painted phone cases. $2,500+ donated to Save the Bay.", year: "2024 – 25", link: "https://www.instagram.com/turtlecases.co/", also: [ { label: "instagram", url: "https://www.instagram.com/turtlecases.co/" }, { label: "tiktok", url: "https://www.tiktok.com/@turtlecases.co" } ], gallery: [ { src: "photos/case-cats.jpg", alt: "Hand-painted cat phone case" }, { src: "photos/case-nyc.jpg", alt: "Hand-painted NYC phone case" }, { src: "photos/case-lilies.jpg", alt: "Hand-painted lily phone case" } ] },
+    { title: "TurtleCases.Co", short: "Hand-painted phone cases. $2,500+ donated to Save the Bay.", year: "2024 – 25", link: "https://www.instagram.com/turtlecases.co/", gallery: [ { src: "photos/case-cats.jpg", alt: "Hand-painted cat phone case" }, { src: "photos/case-nyc.jpg", alt: "Hand-painted NYC phone case" }, { src: "photos/case-lilies.jpg", alt: "Hand-painted lily phone case" }, { url: "https://www.instagram.com/turtlecases.co/", label: "instagram", icon: "ig", img: "photos/case-ig.jpg" }, { url: "https://www.tiktok.com/@turtlecases.co", label: "tiktok", icon: "tt", img: "photos/case-tiktok.jpg" } ] },
     { title: "UNIQLO “Together to the Moon”", short: "Moon bag marketing campaign that placed 4th of 120+ teams at DECA States.", year: "2023" }
   ],
 
@@ -381,9 +407,9 @@ const SITE = {
       { role: "Strategy & Ops Intern", org: "TrashLab", when: "Summer 2024", note: "Interviewed 10+ waste haulers and city partners. What they told me shaped the product." }
     ]},
     { group: "Leadership", items: [
-      { role: "DECA Chapter President", org: "170+ members · grew our international delegation 31%", when: "2025 – 2026", note: "Ran 30+ weekly workshops and started Fremont's first DECA mini-conference.", gallery: [ { src: "photos/deca-chapter.jpg", alt: "The whole MSJ DECA chapter at a conference" }, { src: "photos/deca-stage.jpg", alt: "On stage at the awards ceremony" }, { src: "photos/deca-trophies.jpg", alt: "Holding our trophies" }, { src: "photos/deca-anaheim.jpg", alt: "Our team outside the Anaheim Convention Center" }, { url: "https://www.instagram.com/msjdeca/", label: "@msjdeca", icon: "ig" } ] },
-      { role: "ASB Secretary", org: "Mission San Jose High", when: "2024 – 2026", note: "Managed money for 85 clubs and planned our first winter ball in 20 years.", gallery: [ { src: "photos/asb-bleachers.jpg", alt: "Spirit week in the bleachers" }, { src: "photos/asb-rally.jpg", alt: "Hosting a rally" }, { src: "photos/asb-spirit.jpg", alt: "ASB at a spirit event" }, { src: "photos/asb-l2.jpg", alt: "Leadership class" }, { url: "https://www.msjhsasb.org/", label: "msjhsasb.org", img: "https://www.msjhsasb.org/opengraph-image?19812c39dac90a6f", pos: "4% 50%" } ] },
-      { role: "Arts & Entertainment Editor", org: "The Smoke Signal", when: "2024 – 2026", note: "Wrote and edited 105+ articles and mentored 30+ writers.", gallery: [ { src: "photos/smoke-signal.jpg", alt: "The Smoke Signal staff" }, { url: "https://thesmokesignal.org/", label: "website", icon: "news" }, { url: "https://issuu.com/smokesignal", label: "Oct '26 issue", img: "https://image.isu.pub/261017032345-39829a9b12488f22886ff0ceaa7c717a/jpg/page_1_thumb_large.jpg" }, { url: "https://issuu.com/smokesignal", label: "Sep '26 issue", img: "https://image.isu.pub/260911201215-e53dc5de1b92260ebe44cbae02f4dd14/jpg/page_1_thumb_large.jpg" }, { url: "https://issuu.com/smokesignal", label: "Aug '26 issue", img: "https://image.isu.pub/260814074004-a46e07a323cc22a91109bf8bf065412d/jpg/page_1_thumb_large.jpg" } ] }
+      { role: "DECA Chapter President", org: "170+ members · grew our international delegation 31%", when: "2025 – 2026", note: "Ran 30+ weekly workshops and started Fremont's first DECA mini-conference.", gallery: [ { src: "photos/deca-chapter.jpg", alt: "The whole MSJ DECA chapter at a conference" }, { src: "photos/deca-stage.jpg", alt: "On stage at the awards ceremony" }, { src: "photos/deca-trophies.jpg", alt: "ICDC is calling..." }, { src: "photos/deca-anaheim.jpg", alt: "Officer team" }, { url: "https://www.instagram.com/msjdeca/", label: "@msjdeca", icon: "ig", img: "photos/deca-ig.jpg" } ] },
+      { role: "ASB Secretary", org: "Mission San Jose High", when: "2024 – 2026", note: "Managed money for 85 clubs and planned our first winter ball in 20 years.", gallery: [ { src: "photos/asb-bleachers.jpg", alt: "Spirit week in the bleachers" }, { src: "photos/asb-rally.jpg", alt: "Hosting an assembly" }, { src: "photos/asb-spirit.jpg", alt: "ASB at a spirit event" }, { src: "photos/asb-l2.jpg", alt: "ASB Officer Team" }, { url: "https://www.msjhsasb.org/", label: "msjhsasb.org", img: "https://www.msjhsasb.org/opengraph-image?19812c39dac90a6f", pos: "4% 50%" } ] },
+      { role: "Arts & Entertainment Editor", org: "The Smoke Signal", when: "2024 – 2026", note: "Wrote and edited 105+ articles and mentored 30+ writers.", gallery: [ { src: "photos/smoke-signal.jpg", alt: "Smoke Signal editors" }, { url: "https://thesmokesignal.org/", label: "website", icon: "news", img: "photos/smoke-site.jpg" }, { url: "https://issuu.com/smokesignal", label: "Oct '26 issue", img: "https://image.isu.pub/261017032345-39829a9b12488f22886ff0ceaa7c717a/jpg/page_1_thumb_large.jpg" }, { url: "https://issuu.com/smokesignal", label: "Sep '26 issue", img: "https://image.isu.pub/260911201215-e53dc5de1b92260ebe44cbae02f4dd14/jpg/page_1_thumb_large.jpg" }, { url: "https://issuu.com/smokesignal", label: "Aug '26 issue", img: "https://image.isu.pub/260814074004-a46e07a323cc22a91109bf8bf065412d/jpg/page_1_thumb_large.jpg" } ] }
     ]}
   ],
 
@@ -491,18 +517,18 @@ function draw(canvas, seed) {
 }
 
 const PROJ_ICONS = {
-  chain: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(5 8) scale(2.1)" stroke-width="1.25"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g><path d="M50 7l1.8 4.2L56 13l-4.2 1.8L50 19l-1.8-4.2L44 13l4.2-1.8z" fill="var(--accent)" stroke="none"/></svg>`,
-  cow: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 21c-6 0-11-4-12-10 4 3 8 4 13 4M42 21c6 0 11-4 12-10-4 3-8 4-13 4"/><path d="M20 24c0-6 5-9 12-9s12 3 12 9v12c0 7-5 13-12 13s-12-6-12-13z" fill="#fff"/><ellipse cx="32" cy="42" rx="9" ry="6" fill="var(--butter)"/><circle cx="26.5" cy="29" r="1.4" fill="currentColor" stroke="none"/><circle cx="37.5" cy="29" r="1.4" fill="currentColor" stroke="none"/><circle cx="29" cy="42" r="1" fill="currentColor" stroke="none"/><circle cx="35" cy="42" r="1" fill="currentColor" stroke="none"/><path d="M47 12a6 6 0 0 1 6 6M47 6a12 12 0 0 1 12 12" stroke="var(--accent)"/></svg>`,
-  stadium: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 38v6c0 6 10.7 11 24 11s24-5 24-11v-6"/><ellipse cx="32" cy="38" rx="24" ry="11" fill="#fff"/><ellipse cx="32" cy="38" rx="12" ry="5" fill="var(--butter)"/><path d="M32 6l10 17H22z" fill="var(--accent)" stroke="var(--accent)"/><path d="M32 12v5" stroke="#fff"/><circle cx="32" cy="20" r="1" fill="#fff" stroke="none"/></svg>`,
-  ball: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="31" cy="34" r="20" fill="var(--butter)"/><path d="M31 14v40M11 34h40M17.5 19.5c6 5 6 24 0 29M44.5 19.5c-6 5-6 24 0 29"/><path d="M52 6l1.8 4.2L58 12l-4.2 1.8L52 18l-1.8-4.2L46 12l4.2-1.8z" fill="var(--accent)" stroke="none"/></svg>`,
-  cell: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="6" width="30" height="52" rx="7" fill="#fff"/><path d="M28 11h8"/><circle cx="32" cy="33" r="8" fill="var(--butter)"/><path d="M32 25v-5M32 41v5M24 33h-5M40 33h5"/><path d="M29.5 18l2.5 2 2.5-2M29.5 48l2.5-2 2.5 2M17 30.5l2 2.5-2 2.5M47 30.5l-2 2.5 2 2.5" stroke="var(--accent)"/></svg>`,
-  arm: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 56h26"/><rect x="15" y="47" width="16" height="9" rx="2.5" fill="#fff"/><path d="M23 47l-4-19 21-11"/><circle cx="19" cy="28" r="4" fill="var(--butter)"/><circle cx="23" cy="47" r="0.1"/><path d="M40 17l6-6M40 17l8 3M46 11l5 1M48 20l3 4"/><circle cx="40" cy="17" r="3.5" fill="var(--butter)"/><path d="M52 34l1.5 3.5L57 39l-3.5 1.5L52 44l-1.5-3.5L47 39l3.5-1.5z" fill="var(--accent)" stroke="none"/></svg>`
+  chain: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><g class="a-swing"><g transform="translate(5 8) scale(2.1)" stroke-width="1.25"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></g><path class="a-spark" d="M50 7l1.8 4.2L56 13l-4.2 1.8L50 19l-1.8-4.2L44 13l4.2-1.8z" fill="var(--accent)" stroke="none"/></svg>`,
+  cow: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><g class="a-nod"><path d="M22 21c-6 0-11-4-12-10 4 3 8 4 13 4M42 21c6 0 11-4 12-10-4 3-8 4-13 4"/><path d="M20 24c0-6 5-9 12-9s12 3 12 9v12c0 7-5 13-12 13s-12-6-12-13z" fill="#fff"/><ellipse cx="32" cy="42" rx="9" ry="6" fill="var(--butter)"/><circle cx="26.5" cy="29" r="1.4" fill="currentColor" stroke="none"/><circle cx="37.5" cy="29" r="1.4" fill="currentColor" stroke="none"/><circle cx="29" cy="42" r="1" fill="currentColor" stroke="none"/><circle cx="35" cy="42" r="1" fill="currentColor" stroke="none"/></g><path class="a-pulse" d="M47 12a6 6 0 0 1 6 6" stroke="var(--accent)"/><path class="a-pulse d2" d="M47 6a12 12 0 0 1 12 12" stroke="var(--accent)"/></svg>`,
+  stadium: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 38v6c0 6 10.7 11 24 11s24-5 24-11v-6"/><ellipse cx="32" cy="38" rx="24" ry="11" fill="#fff"/><ellipse class="a-pulse" cx="32" cy="38" rx="12" ry="5" fill="var(--butter)"/><g class="a-blink"><path d="M32 6l10 17H22z" fill="var(--accent)" stroke="var(--accent)"/><path d="M32 12v5" stroke="#fff"/><circle cx="32" cy="20" r="1" fill="#fff" stroke="none"/></g></svg>`,
+  ball: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><ellipse class="a-shadow" cx="31" cy="59" rx="12" ry="2" fill="var(--speck)" stroke="none"/><g class="a-ball"><circle cx="31" cy="34" r="20" fill="var(--butter)"/><path d="M31 14v40M11 34h40M17.5 19.5c6 5 6 24 0 29M44.5 19.5c-6 5-6 24 0 29"/></g><path class="a-spark" d="M52 6l1.8 4.2L58 12l-4.2 1.8L52 18l-1.8-4.2L46 12l4.2-1.8z" fill="var(--accent)" stroke="none"/></svg>`,
+  cell: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="6" width="30" height="52" rx="7" fill="#fff"/><path d="M28 11h8"/><g class="a-spin"><circle cx="32" cy="33" r="8" fill="var(--butter)"/><path d="M32 25v-5M32 41v5M24 33h-5M40 33h5"/><path d="M29.5 18l2.5 2 2.5-2M29.5 48l2.5-2 2.5 2M17 30.5l2 2.5-2 2.5M47 30.5l-2 2.5 2 2.5" stroke="var(--accent)"/></g></svg>`,
+  arm: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 56h26"/><rect x="15" y="47" width="16" height="9" rx="2.5" fill="#fff"/><g class="a-arm"><path d="M23 47l-4-19 21-11"/><circle cx="19" cy="28" r="4" fill="var(--butter)"/><g class="a-claw"><path d="M40 17l6-6M40 17l8 3M46 11l5 1M48 20l3 4"/><circle cx="40" cy="17" r="3.5" fill="var(--butter)"/></g></g><path class="a-spark" d="M52 34l1.8 4.2L58 40l-4.2 1.8L52 46l-1.8-4.2L46 40l4.2-1.8z" fill="var(--accent)" stroke="none"/></svg>`
 };
 $("#projectList").innerHTML = SITE.projects.map((p, i) => {
   const hasMore = p.story.length || p.stats.length || p.links.length || p.todo;
   return `
   <article class="proj">
-    ${p.icon ? `<div class="thumb ico" aria-hidden="true">${PROJ_ICONS[p.icon] || ""}</div>` : `<div class="thumb">${p.image ? `<img src="${esc(p.image)}" alt="">` : `<canvas data-seed="${esc(p.title)}" aria-hidden="true"></canvas><b>${esc(p.thumb)}</b>`}</div>`}
+    ${p.icon ? `<div class="thumb ico" data-ico="${esc(p.icon)}" aria-hidden="true">${PROJ_ICONS[p.icon] || ""}</div>` : `<div class="thumb">${p.image ? `<img src="${esc(p.image)}" alt="">` : `<canvas data-seed="${esc(p.title)}" aria-hidden="true"></canvas><b>${esc(p.thumb)}</b>`}</div>`}
     <div>
       <div class="pline"><span class="mono">${String(i + 1).padStart(2, "0")} · ${esc(p.year)} · ${esc(p.kind)}</span><span class="wins">${[].concat(p.win || []).map((w, k) => `<span class="chip${k ? "" : " win"}">${k ? "" : "✦ "}${esc(w)}</span>`).join("")}</span></div>
       <h3>${esc(p.title)}</h3>
@@ -528,19 +554,28 @@ $("#projectList").addEventListener("click", e => {
 
 const TILE_ICONS = {
   ig: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor"/></svg>`,
+  tt: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 4c.5 2.6 2.2 4.2 5 4.5"/></svg>`,
   news: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v8a2 2 0 0 1-2 2"/><path d="M7 9h7M7 12h7M7 15h4"/></svg>`
 };
 const tile = g => g.url
-  ? `<a class="ltile${g.fit === "contain" ? " contain" : ""}" href="${esc(g.url)}" target="_blank" rel="noopener">${g.img ? `<img src="${esc(g.img)}" alt="" loading="lazy"${g.pos ? ` style="object-position:${esc(g.pos)}"` : ""} onerror="this.remove()">` : `<span class="lt-ico">${TILE_ICONS[g.icon] || ""}</span>`}<span class="lt-label">${esc(g.label)} ↗</span></a>`
+  ? `<a class="ltile${g.fit === "contain" ? " contain" : ""}" href="${esc(g.url)}" target="_blank" rel="noopener">${g.icon ? `<span class="lt-ico">${TILE_ICONS[g.icon] || ""}</span>` : ""}${g.img ? `<img src="${esc(g.img)}" alt="" loading="lazy"${g.pos ? ` style="object-position:${esc(g.pos)}"` : ""} onerror="this.remove()">` : ""}<span class="lt-label">${esc(g.label)} ↗</span></a>`
   : `<img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy" onerror="this.remove()">`;
 $("#expList").innerHTML = SITE.experience.map(g => g.chips ? `<div class="xgroup"><h4>${esc(g.group)}</h4><div class="wins">${g.chips.map(c => `<span class="chip">${esc(c)}</span>`).join("")}</div></div>` : `<div class="xgroup"><h4>${esc(g.group)}</h4><ul class="list">` +
   g.items.map(i => `<li><b>${esc(i.role)}</b>${i.when ? `<span class="when mono">${esc(i.when)}</span>` : ""}<span class="sub">${esc(i.org)}</span>${i.note ? `<span class="note">${esc(i.note)}${(i.links || []).map(l => ` <a class="mlink" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join(" ·")}</span>` : ""}${i.gallery ? `<div class="gallery sm">${i.gallery.map(tile).join("")}</div>` : ""}</li>`).join("") + `</ul></div>`).join("");
-$("#moreList").innerHTML = SITE.more.map(m => `<li>${m.link ? `<a href="${esc(m.link)}" target="_blank" rel="noopener"><b>${esc(m.title)} ↗</b></a>` : `<b>${esc(m.title)}</b>`}<span>${esc(m.short)}${(m.also || []).map(a => ` <a class="mlink" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.label)} ↗</a>`).join(" ·")}</span><span class="mono">${esc(m.year)}</span>${m.gallery ? `<div class="gallery sm">${m.gallery.map(g => `<img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy" onerror="this.remove()">`).join("")}</div>` : ""}</li>`).join("");
+$("#moreList").innerHTML = SITE.more.map(m => `<li>${m.link ? `<a href="${esc(m.link)}" target="_blank" rel="noopener"><b>${esc(m.title)} ↗</b></a>` : `<b>${esc(m.title)}</b>`}<span>${esc(m.short)}${(m.also || []).map(a => ` <a class="mlink" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.label)} ↗</a>`).join(" ·")}</span><span class="mono">${esc(m.year)}</span>${m.gallery ? `<div class="gallery sm">${m.gallery.map(tile).join("")}</div>` : ""}</li>`).join("");
 $("#interests").innerHTML = SITE.interests.map(t => `<span class="chip">${esc(t)}</span>`).join("");
 
 const photo = (p, hidden) => `<figure class="photo"${hidden ? ' aria-hidden="true"' : ""}><div class="img${p.src ? " has" : ""}">${p.src ? `<img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy" onerror="this.closest('figure').remove()">` : esc(p.caption)}</div>${p.src && p.caption ? `<figcaption>${esc(p.caption)}</figcaption>` : ""}</figure>`;
 $("#track").innerHTML = SITE.photos.map(p => photo(p)).join("") + SITE.photos.map(p => photo(p, true)).join("");
 // click a photo to pop it open
+// project icons do their little move once when they scroll into view
+const icoIO = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add("play");
+  setTimeout(() => e.target.classList.remove("play"), 1800);
+  icoIO.unobserve(e.target);
+}), { threshold: .6 });
+document.querySelectorAll(".thumb.ico").forEach(t => icoIO.observe(t));
 const lb = document.createElement("div");
 lb.className = "lightbox";
 lb.innerHTML = `<figure><img alt=""><figcaption></figcaption></figure>`;
