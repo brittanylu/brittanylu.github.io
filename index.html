@@ -148,9 +148,9 @@ main{display:grid;gap:20px;padding-block:32px 40px}
 .photo .img{aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:var(--card);display:grid;place-items:center;color:var(--muted);font-size:13px;border:1.5px dashed var(--line)}
 .photo .img.has{border:0}
 .photo img{width:100%;height:100%;object-fit:cover;display:block}
-.photo figcaption{font-size:13px;color:var(--muted);margin-top:8px}
-.photo:nth-child(odd) .img{transform:rotate(-1.5deg)}
-.photo:nth-child(even) .img{transform:rotate(1.2deg)}
+.photo figcaption{font-size:13px;color:var(--muted);margin-top:8px;text-align:left;padding-left:2px}
+.photo:nth-child(odd){transform:rotate(-1.5deg)}
+.photo:nth-child(even){transform:rotate(1.2deg)}
 
 /* bookshelf */
 .shelf{display:flex;gap:12px;overflow-x:auto;padding-block:10px 14px;border-bottom:6px solid var(--line);border-radius:0 0 4px 4px}
@@ -355,7 +355,23 @@ const SITE = {
   ],
 
   interests: ["Volleyball", "Formula 1", "Hiking", "Baking", "Sweet treats", "Charcuterie boards", "Building apps"],
-  photos: ["volleyball", "hiking", "F1", "baking", "sweet treats", "friends"].map(c => ({ src: "", caption: c })),
+  photos: [
+    { src: "photos/1.jpg", caption: "holidays" },
+    { src: "photos/2.jpg", caption: "my cat" },
+    { src: "photos/5.jpg", caption: "hiking" },
+    { src: "photos/4.jpg", caption: "holiday cookies" },
+    { src: "photos/IMG_0584%202.JPG", caption: "sunset hike" },
+    { src: "photos/7.jpg", caption: "coastline" },
+    { src: "photos/IMG_1054.JPG", caption: "Red Bull showrun" },
+    { src: "photos/3.jpg", caption: "cat in a hat" },
+    { src: "photos/8.jpg", caption: "charcuterie" },
+    { src: "photos/IMG_0705.jpg", caption: "golden hour" },
+    { src: "photos/IMG_1472.JPG", caption: "peach cake I baked" },
+    { src: "photos/6.jpg", caption: "window watching" },
+    { src: "photos/IMG_9369.JPG", caption: "beach day" },
+    { src: "photos/10.jpg", caption: "DECA" },
+    { src: "photos/9.jpg", caption: "naptime with my other cat" }
+  ],
   books: [
     { title: "All Souls", author: "Michael Patrick MacDonald", cover: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1387743100i/105687.jpg", link: "https://www.goodreads.com/book/show/105687.All_Souls" },
     { title: "Girl, Interrupted", author: "Susanna Kaysen", cover: "https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1475482930i/68783.jpg", link: "https://www.goodreads.com/book/show/68783.Girl_Interrupted" },
