@@ -105,6 +105,8 @@ main{display:grid;gap:20px;padding-block:32px 40px}
 .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--card);cursor:zoom-in;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
 .gallery img:hover{transform:translateY(-4px) rotate(-1deg)}
+.mlink{color:var(--accent);white-space:nowrap;text-decoration:none}
+.mlink:hover{text-decoration:underline}
 .proj h3{font-family:var(--serif);font-size:19px;font-weight:400;letter-spacing:-.01em;margin:0 0 6px}
 .meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .pline{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:8px}
@@ -354,7 +356,7 @@ const SITE = {
   more: [
     { title: "Anya the Mini-CEO", short: "A 26-page children's book I wrote and co-illustrated, self-published on Amazon.", year: "2025", link: "https://www.amazon.com/dp/B0FWC9SHBZ" },
     { title: "SolaraTech", short: "A solar panel business pitch for Wharton Essentials of Entrepreneurship.", year: "2025", link: "https://canva.link/solaratech-group-8" },
-    { title: "TurtleCases.Co", short: "Hand-painted phone cases. $2,500+ donated to Save the Bay.", year: "2024 – 25", link: "https://www.instagram.com/turtlecases.co/" },
+    { title: "TurtleCases.Co", short: "Hand-painted phone cases. $2,500+ donated to Save the Bay.", year: "2024 – 25", link: "https://www.instagram.com/turtlecases.co/", also: [ { label: "instagram", url: "https://www.instagram.com/turtlecases.co/" }, { label: "tiktok", url: "https://www.tiktok.com/@turtlecases.co" } ] },
     { title: "UNIQLO “Together to the Moon”", short: "Moon bag marketing campaign that placed 4th of 120+ teams at DECA States.", year: "2023" }
   ],
 
@@ -512,7 +514,7 @@ $("#projectList").addEventListener("click", e => {
 
 $("#expList").innerHTML = SITE.experience.map(g => g.chips ? `<div class="xgroup"><h4>${esc(g.group)}</h4><div class="wins">${g.chips.map(c => `<span class="chip">${esc(c)}</span>`).join("")}</div></div>` : `<div class="xgroup"><h4>${esc(g.group)}</h4><ul class="list">` +
   g.items.map(i => `<li><b>${esc(i.role)}</b>${i.when ? `<span class="when mono">${esc(i.when)}</span>` : ""}<span class="sub">${esc(i.org)}</span>${i.note ? `<span class="note">${esc(i.note)}</span>` : ""}</li>`).join("") + `</ul></div>`).join("");
-$("#moreList").innerHTML = SITE.more.map(m => `<li>${m.link ? `<a href="${esc(m.link)}" target="_blank" rel="noopener"><b>${esc(m.title)} ↗</b></a>` : `<b>${esc(m.title)}</b>`}<span>${esc(m.short)}</span><span class="mono">${esc(m.year)}</span></li>`).join("");
+$("#moreList").innerHTML = SITE.more.map(m => `<li>${m.link ? `<a href="${esc(m.link)}" target="_blank" rel="noopener"><b>${esc(m.title)} ↗</b></a>` : `<b>${esc(m.title)}</b>`}<span>${esc(m.short)}${(m.also || []).map(a => ` <a class="mlink" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.label)} ↗</a>`).join(" ·")}</span><span class="mono">${esc(m.year)}</span></li>`).join("");
 $("#interests").innerHTML = SITE.interests.map(t => `<span class="chip">${esc(t)}</span>`).join("");
 
 const photo = (p, hidden) => `<figure class="photo"${hidden ? ' aria-hidden="true"' : ""}><div class="img${p.src ? " has" : ""}">${p.src ? `<img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy">` : esc(p.caption)}</div>${p.src && p.caption ? `<figcaption>${esc(p.caption)}</figcaption>` : ""}</figure>`;
