@@ -105,6 +105,8 @@ main{display:grid;gap:20px;padding-block:32px 40px}
 .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--card);cursor:zoom-in;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
 .gallery img:hover{transform:translateY(-4px) rotate(-1deg)}
+.gallery.sm{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;grid-column:1 / -1;margin-top:10px;max-width:520px}
+.gallery.sm img{aspect-ratio:1/1;border-radius:10px}
 .mlink{color:var(--accent);white-space:nowrap;text-decoration:none}
 .mlink:hover{text-decoration:underline}
 .proj h3{font-family:var(--serif);font-size:19px;font-weight:400;letter-spacing:-.01em;margin:0 0 6px}
@@ -292,7 +294,7 @@ const SITE = {
       short: "A shared incident-response tool where people and AI agents work on one problem together.",
       thumb: "1st",
       story: [
-        "Built for the AI Passport Ideathon. The hard part was access, so I designed scoped permissions that keep each agent to only what it needs. It won 1st of 30 teams and got me a founder's associate interview."
+        "Built for the AI Passport Ideathon. I designed scoped permissions so each agent only gets what it needs. It won 1st of 30 teams and got me a founder's associate interview."
       ],
       stats: [],
       links: [ { label: "watch the video ↗", url: "https://www.loom.com/share/806638d7227d4dca9a98aafe141fbf52" } ], image: ""
@@ -302,7 +304,7 @@ const SITE = {
       short: "Using satellite imagery and AI to warn herders in South Sudan before cattle herds collide.",
       thumb: "UN",
       story: [
-        "When herds run into each other over land and water, it can turn violent. I built HerdNet with the United Nations: it uses satellite data and AI to predict the routes of 12 million cattle across South Sudan and sends alerts to herders' basic phones so they can reroute first. I designed it to be handed off to South Sudan's Ministry of Agriculture, and the UN picked my proposal out of 170 teams."
+        "When herds collide over land and water, it can turn violent. HerdNet uses satellite data and AI to predict where 12 million cattle are headed across South Sudan, then texts herders' basic phones so they can reroute first. The UN picked it out of 170 teams."
       ],
       stats: [ { value: "$8,670", label: "a year to run the pilot" } ],
       links: [ { label: "see the deck ↗", url: "https://canva.link/5cbwp71lsiw68wd" } ], image: ""
@@ -312,7 +314,7 @@ const SITE = {
       short: "Crowd safety for stadiums that spots dangerous congestion before it becomes a crisis.",
       thumb: "Top 10",
       story: [
-        "I combined thermal imaging, 4K video and edge AI into a SaaS business plan, with revenue projected to reach $5.6M by year 3. It made the top 10 out of thousands of applicants at Berkeley YBV, and I pitched it to real VCs at Stanford. Through The Knowledge Society, I started building a physical prototype."
+        "Thermal imaging, 4K video and edge AI, turned into a SaaS plan projected to reach $5.6M by year 3. Top 10 at Berkeley YBV, then pitched to real VCs at Stanford."
       ],
       stats: [],
       links: [], image: ""
@@ -322,7 +324,7 @@ const SITE = {
       short: "A three-year AI plan for the Golden State Warriors' arena.",
       thumb: "4th",
       story: [
-        "I ran surveys and focus groups, interviewed industry experts, worked with a sports PR company and an AI startup, and read 300 reviews to find what bugs guests and staff. It took thousands of cold emails and neon yellow dress pants, and it placed 4th in the world (top 2%)."
+        "Surveys, focus groups, expert interviews and 300 reviews to find what bugs guests and staff. It took thousands of cold emails and neon yellow dress pants, and it placed 4th in the world."
       ],
       stats: [ { value: "$11M", label: "added revenue a year" } ],
       links: [ { label: "read the report ↗", url: "https://canva.link/chase-center-business-plan-brittany" } ], image: ""
@@ -332,7 +334,7 @@ const SITE = {
       short: "A mobile app prototype for designing logic-gated CAR-T and CAR-NK cancer therapies.",
       thumb: "35",
       story: [
-        "Logic-gated cell therapies only attack cells that match a specific combination of targets. It's a cool idea, but hard to picture. I built a mobile prototype with drag-and-drop logic blocks, adjustable biological parameters and a simulation engine, and delivered the demo as part of a learning plan for 35 students. I also published a blog on logic-gated CAR/NK cells."
+        "Logic-gated cell therapies only attack cells that match a specific combination of targets. I built a drag-and-drop prototype to make that easier to picture and demoed it to 35 students."
       ],
       stats: [],
       links: [ { label: "watch the demo ↗", url: "https://www.loom.com/share/94037472c3af4567a4d227f86defa9c8" }, { label: "figma ↗", url: "https://www.figma.com/make/0skUpGf3ZRGzsUN1n7u7zg/Immune-Studio-UX-Wireframes" } ], image: ""
@@ -342,7 +344,7 @@ const SITE = {
       short: "A robot arm you teach by showing it what to do.",
       thumb: "Semis",
       story: [
-        "When the arm sees something new, it asks you to show it the task on your phone camera. Pose estimation maps your hand onto the arm, and imitation learning lets it repeat the task next time. My team and I designed it for assisted living, so older users don't have to keep bending down."
+        "When the arm sees something new, you show it the task on your phone camera and it learns to repeat it. We designed it for assisted living, so older users don't have to keep bending down."
       ],
       stats: [], links: [], image: "",
       gallery: [
@@ -356,42 +358,46 @@ const SITE = {
   more: [
     { title: "Anya the Mini-CEO", short: "A 26-page children's book I wrote and co-illustrated, self-published on Amazon.", year: "2025", link: "https://www.amazon.com/dp/B0FWC9SHBZ" },
     { title: "SolaraTech", short: "A solar panel business pitch for Wharton Essentials of Entrepreneurship.", year: "2025", link: "https://canva.link/solaratech-group-8" },
-    { title: "TurtleCases.Co", short: "Hand-painted phone cases. $2,500+ donated to Save the Bay.", year: "2024 – 25", link: "https://www.instagram.com/turtlecases.co/", also: [ { label: "instagram", url: "https://www.instagram.com/turtlecases.co/" }, { label: "tiktok", url: "https://www.tiktok.com/@turtlecases.co" } ] },
+    { title: "TurtleCases.Co", short: "Hand-painted phone cases. $2,500+ donated to Save the Bay.", year: "2024 – 25", link: "https://www.instagram.com/turtlecases.co/", also: [ { label: "instagram", url: "https://www.instagram.com/turtlecases.co/" }, { label: "tiktok", url: "https://www.tiktok.com/@turtlecases.co" } ], gallery: [ { src: "photos/case-cats.jpg", alt: "Hand-painted cat phone case" }, { src: "photos/case-nyc.jpg", alt: "Hand-painted NYC phone case" }, { src: "photos/case-lilies.jpg", alt: "Hand-painted lily phone case" } ] },
     { title: "UNIQLO “Together to the Moon”", short: "Moon bag marketing campaign that placed 4th of 120+ teams at DECA States.", year: "2023" }
   ],
 
   experience: [
     { group: "Now", items: [
-      { role: "Junior Consultant", org: "180 Degrees Consulting · laptops for schools in Ghana", when: "Sep 2026 – Present", note: "Helping a nonprofit bring laptops and digital infrastructure to under-resourced schools in Ghana. I own the partnerships workstream, lining up companies to donate their used laptops. One of 17 picked from 122 applicants." },
-      { role: "Junior Consultant", org: "BU Consulting Group · Nike turnaround", when: "Sep 2026 – Present", note: "Dug into Nike's financials, competitors, consumer trends and distribution, then narrowed a turnaround down to four focus areas, like taking what's working in running to other sports and fixing China." },
-      { role: "Case competitor", org: "herNetwork × Genpact · AI launch for a top-20 bank", when: "Sep 2026 – Present", note: "Advising a top-20 U.S. bank on launching AI agents for customer service. We're building the go-to-market plan, business case and executive pitch for Demo Day in December." }
+      { role: "Junior Consultant", org: "180 Degrees Consulting · laptops for schools in Ghana", when: "Sep 2026 – Present", note: "Helping a nonprofit get laptops into schools in Ghana. I run partnerships, lining up companies to donate their old ones." },
+      { role: "Junior Consultant", org: "BU Consulting Group · Nike turnaround", when: "Sep 2026 – Present", note: "Took Nike apart (financials, competitors, consumers) and narrowed a turnaround down to four bets." },
+      { role: "Case competitor", org: "herNetwork × Genpact · AI launch for a top-20 bank", when: "Sep 2026 – Present", note: "Building the go-to-market plan and pitch for a bank's AI agent launch. Demo Day is in December." }
     ]},
     { group: "Before", items: [
-      { role: "Civic Intern", org: "Fremont City Council", when: "Summer 2025", note: "Called 100 residents a week, researched local homelessness and summarized feedback from council meetings. I also wrote a policy position on a housing appeal for the council." },
-      { role: "Strategy & Ops Intern", org: "TrashLab", when: "Summer 2024", note: "A seed-stage startup making software for cities and waste haulers. I interviewed 10+ haulers and city partners, ran surveys and tested prototypes, and what I found shaped the product's features and onboarding." }
+      { role: "Civic Intern", org: "Fremont City Council", when: "Summer 2025", note: "Called 100 residents a week, researched local homelessness, and wrote a policy position for the council." },
+      { role: "Strategy & Ops Intern", org: "TrashLab", when: "Summer 2024", note: "Interviewed 10+ waste haulers and city partners. What they told me shaped the product." }
     ]},
     { group: "Leadership", items: [
-      { role: "DECA Chapter President", org: "170+ members · grew our international delegation 31%", when: "2025 – 2026", note: "Ran 30+ weekly workshops, started a parent judging program, co-hosted Fremont's first DECA mini-conference, and fundraised so travel costs didn't keep anyone home." },
-      { role: "ASB Secretary", org: "Mission San Jose High", when: "2024 – 2026", note: "Managed finances for 85 clubs, ran weekly announcements for an 1,800-student campus, and planned new events, including a car meet that raised $3K." },
-      { role: "Arts & Entertainment Editor", org: "The Smoke Signal", when: "2024 – 2026", note: "Wrote and edited 105+ articles, mentored 30+ writers each cycle, and pushed our coverage toward local artists and new student clubs." }
+      { role: "DECA Chapter President", org: "170+ members · grew our international delegation 31%", when: "2025 – 2026", note: "Ran 30+ weekly workshops and started Fremont's first DECA mini-conference.", links: [ { label: "instagram", url: "https://www.instagram.com/msjdeca/" } ], gallery: [ { src: "photos/deca-chapter.jpg", alt: "The whole MSJ DECA chapter at a conference" }, { src: "photos/deca-stage.jpg", alt: "On stage at the awards ceremony" }, { src: "photos/deca-trophies.jpg", alt: "Holding our trophies" }, { src: "photos/deca-anaheim.jpg", alt: "Our team outside the Anaheim Convention Center" } ] },
+      { role: "ASB Secretary", org: "Mission San Jose High", when: "2024 – 2026", note: "Managed money for 85 clubs and planned new events, like a car meet that raised $3K.", links: [ { label: "msjhsasb.org", url: "https://www.msjhsasb.org/" } ], gallery: [ { src: "photos/asb-bleachers.jpg", alt: "Spirit week in the bleachers" }, { src: "photos/asb-rally.jpg", alt: "Hosting a rally" }, { src: "photos/asb-spirit.jpg", alt: "ASB at a spirit event" }, { src: "photos/asb-l2.jpg", alt: "Leadership class" } ] },
+      { role: "Arts & Entertainment Editor", org: "The Smoke Signal", when: "2024 – 2026", note: "Wrote and edited 105+ articles and mentored 30+ writers.", links: [ { label: "thesmokesignal.org", url: "https://thesmokesignal.org/" }, { label: "print issues", url: "https://issuu.com/smokesignal" } ], gallery: [ { src: "photos/smoke-signal.jpg", alt: "The Smoke Signal staff" } ] }
     ]}
   ],
 
   interests: ["Volleyball", "Formula 1", "Hiking", "Baking", "Sweet treats", "Charcuterie boards", "Building apps"],
   photos: [
     { src: "photos/holiday-cats.jpg", caption: "holidays" },
+    { src: "photos/vb-team.jpg", caption: "volleyball seniors" },
     { src: "photos/2.jpg", caption: "my cat" },
     { src: "photos/5.jpg", caption: "hiking" },
     { src: "photos/4.jpg", caption: "holiday cookies" },
     { src: "photos/IMG_0584%202.JPG", caption: "sunset hike" },
     { src: "photos/7.jpg", caption: "coastline" },
+    { src: "photos/vb-block.jpg", caption: "blocking at the net" },
     { src: "photos/f1-showrun.jpg", caption: "Red Bull showrun" },
     { src: "photos/3.jpg", caption: "cat in a hat" },
     { src: "photos/8.jpg", caption: "charcuterie" },
     { src: "photos/IMG_0705.jpg", caption: "golden hour" },
     { src: "photos/peach-cake.jpg", caption: "peach cake I baked" },
     { src: "photos/6.jpg", caption: "window watching" },
+    { src: "photos/vb-cutout.jpg", caption: "senior night with coach (sort of)" },
     { src: "photos/IMG_9369.JPG", caption: "beach day" },
+    { src: "photos/vb-lineup.jpg", caption: "game night" },
     { src: "photos/9.jpg", caption: "naptime with my other cat" }
   ],
   books: [
@@ -513,11 +519,11 @@ $("#projectList").addEventListener("click", e => {
 });
 
 $("#expList").innerHTML = SITE.experience.map(g => g.chips ? `<div class="xgroup"><h4>${esc(g.group)}</h4><div class="wins">${g.chips.map(c => `<span class="chip">${esc(c)}</span>`).join("")}</div></div>` : `<div class="xgroup"><h4>${esc(g.group)}</h4><ul class="list">` +
-  g.items.map(i => `<li><b>${esc(i.role)}</b>${i.when ? `<span class="when mono">${esc(i.when)}</span>` : ""}<span class="sub">${esc(i.org)}</span>${i.note ? `<span class="note">${esc(i.note)}</span>` : ""}</li>`).join("") + `</ul></div>`).join("");
-$("#moreList").innerHTML = SITE.more.map(m => `<li>${m.link ? `<a href="${esc(m.link)}" target="_blank" rel="noopener"><b>${esc(m.title)} ↗</b></a>` : `<b>${esc(m.title)}</b>`}<span>${esc(m.short)}${(m.also || []).map(a => ` <a class="mlink" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.label)} ↗</a>`).join(" ·")}</span><span class="mono">${esc(m.year)}</span></li>`).join("");
+  g.items.map(i => `<li><b>${esc(i.role)}</b>${i.when ? `<span class="when mono">${esc(i.when)}</span>` : ""}<span class="sub">${esc(i.org)}</span>${i.note ? `<span class="note">${esc(i.note)}${(i.links || []).map(l => ` <a class="mlink" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join(" ·")}</span>` : ""}${i.gallery ? `<div class="gallery sm">${i.gallery.map(g => `<img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy" onerror="this.remove()">`).join("")}</div>` : ""}</li>`).join("") + `</ul></div>`).join("");
+$("#moreList").innerHTML = SITE.more.map(m => `<li>${m.link ? `<a href="${esc(m.link)}" target="_blank" rel="noopener"><b>${esc(m.title)} ↗</b></a>` : `<b>${esc(m.title)}</b>`}<span>${esc(m.short)}${(m.also || []).map(a => ` <a class="mlink" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.label)} ↗</a>`).join(" ·")}</span><span class="mono">${esc(m.year)}</span>${m.gallery ? `<div class="gallery sm">${m.gallery.map(g => `<img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy" onerror="this.remove()">`).join("")}</div>` : ""}</li>`).join("");
 $("#interests").innerHTML = SITE.interests.map(t => `<span class="chip">${esc(t)}</span>`).join("");
 
-const photo = (p, hidden) => `<figure class="photo"${hidden ? ' aria-hidden="true"' : ""}><div class="img${p.src ? " has" : ""}">${p.src ? `<img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy">` : esc(p.caption)}</div>${p.src && p.caption ? `<figcaption>${esc(p.caption)}</figcaption>` : ""}</figure>`;
+const photo = (p, hidden) => `<figure class="photo"${hidden ? ' aria-hidden="true"' : ""}><div class="img${p.src ? " has" : ""}">${p.src ? `<img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy" onerror="this.closest('figure').remove()">` : esc(p.caption)}</div>${p.src && p.caption ? `<figcaption>${esc(p.caption)}</figcaption>` : ""}</figure>`;
 $("#track").innerHTML = SITE.photos.map(p => photo(p)).join("") + SITE.photos.map(p => photo(p, true)).join("");
 // click a photo to pop it open
 const lb = document.createElement("div");
