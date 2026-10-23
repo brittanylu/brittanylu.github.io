@@ -103,10 +103,18 @@ main{display:grid;gap:20px;padding-block:32px 40px}
 .thumb.ico svg{width:64%;height:64%;color:var(--fg);transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
 .proj:hover .thumb.ico svg{transform:rotate(-6deg) scale(1.07)}
 .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--card);cursor:zoom-in;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
-.gallery img:hover{transform:translateY(-4px) rotate(-1deg)}
-.gallery.sm{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;grid-column:1 / -1;margin-top:10px;max-width:520px}
-.gallery.sm img{aspect-ratio:1/1;border-radius:10px}
+.gallery > img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--card);cursor:zoom-in;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.gallery > img:hover{transform:translateY(-4px) rotate(-1deg)}
+.gallery.sm{grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;grid-column:1 / -1;margin-top:10px;max-width:640px}
+.gallery.sm > img{aspect-ratio:1/1;border-radius:10px}
+.ltile{position:relative;display:block;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--wash);border:1.5px solid var(--butter);transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.ltile:hover{transform:translateY(-4px) rotate(1deg)}
+.ltile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top}
+.ltile.contain img{object-fit:contain;object-position:center;padding:12px;background:#fff}
+.ltile .lt-ico{position:absolute;inset:0;display:grid;place-items:center;color:var(--accent);background:linear-gradient(135deg,var(--wash),var(--blush))}
+.ltile .lt-ico svg{width:38%;height:38%}
+.ltile .lt-label{position:absolute;left:5px;right:5px;bottom:5px;font:400 10px/1.2 var(--mono);background:rgba(255,255,255,.94);color:var(--accent);border-radius:999px;padding:3px 6px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:480px){.gallery.sm{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .mlink{color:var(--accent);white-space:nowrap;text-decoration:none}
 .mlink:hover{text-decoration:underline}
 .proj h3{font-family:var(--serif);font-size:19px;font-weight:400;letter-spacing:-.01em;margin:0 0 6px}
@@ -373,9 +381,9 @@ const SITE = {
       { role: "Strategy & Ops Intern", org: "TrashLab", when: "Summer 2024", note: "Interviewed 10+ waste haulers and city partners. What they told me shaped the product." }
     ]},
     { group: "Leadership", items: [
-      { role: "DECA Chapter President", org: "170+ members · grew our international delegation 31%", when: "2025 – 2026", note: "Ran 30+ weekly workshops and started Fremont's first DECA mini-conference.", links: [ { label: "instagram", url: "https://www.instagram.com/msjdeca/" } ], gallery: [ { src: "photos/deca-chapter.jpg", alt: "The whole MSJ DECA chapter at a conference" }, { src: "photos/deca-stage.jpg", alt: "On stage at the awards ceremony" }, { src: "photos/deca-trophies.jpg", alt: "Holding our trophies" }, { src: "photos/deca-anaheim.jpg", alt: "Our team outside the Anaheim Convention Center" } ] },
-      { role: "ASB Secretary", org: "Mission San Jose High", when: "2024 – 2026", note: "Managed money for 85 clubs and planned new events, like a car meet that raised $3K.", links: [ { label: "msjhsasb.org", url: "https://www.msjhsasb.org/" } ], gallery: [ { src: "photos/asb-bleachers.jpg", alt: "Spirit week in the bleachers" }, { src: "photos/asb-rally.jpg", alt: "Hosting a rally" }, { src: "photos/asb-spirit.jpg", alt: "ASB at a spirit event" }, { src: "photos/asb-l2.jpg", alt: "Leadership class" } ] },
-      { role: "Arts & Entertainment Editor", org: "The Smoke Signal", when: "2024 – 2026", note: "Wrote and edited 105+ articles and mentored 30+ writers.", links: [ { label: "thesmokesignal.org", url: "https://thesmokesignal.org/" }, { label: "print issues", url: "https://issuu.com/smokesignal" } ], gallery: [ { src: "photos/smoke-signal.jpg", alt: "The Smoke Signal staff" } ] }
+      { role: "DECA Chapter President", org: "170+ members · grew our international delegation 31%", when: "2025 – 2026", note: "Ran 30+ weekly workshops and started Fremont's first DECA mini-conference.", gallery: [ { src: "photos/deca-chapter.jpg", alt: "The whole MSJ DECA chapter at a conference" }, { src: "photos/deca-stage.jpg", alt: "On stage at the awards ceremony" }, { src: "photos/deca-trophies.jpg", alt: "Holding our trophies" }, { src: "photos/deca-anaheim.jpg", alt: "Our team outside the Anaheim Convention Center" }, { url: "https://www.instagram.com/msjdeca/", label: "@msjdeca", icon: "ig" } ] },
+      { role: "ASB Secretary", org: "Mission San Jose High", when: "2024 – 2026", note: "Managed money for 85 clubs and planned our first winter ball in 20 years.", gallery: [ { src: "photos/asb-bleachers.jpg", alt: "Spirit week in the bleachers" }, { src: "photos/asb-rally.jpg", alt: "Hosting a rally" }, { src: "photos/asb-spirit.jpg", alt: "ASB at a spirit event" }, { src: "photos/asb-l2.jpg", alt: "Leadership class" }, { url: "https://www.msjhsasb.org/", label: "msjhsasb.org", img: "https://www.msjhsasb.org/opengraph-image?19812c39dac90a6f", pos: "4% 50%" } ] },
+      { role: "Arts & Entertainment Editor", org: "The Smoke Signal", when: "2024 – 2026", note: "Wrote and edited 105+ articles and mentored 30+ writers.", gallery: [ { src: "photos/smoke-signal.jpg", alt: "The Smoke Signal staff" }, { url: "https://thesmokesignal.org/", label: "website", icon: "news" }, { url: "https://issuu.com/smokesignal", label: "Oct '26 issue", img: "https://image.isu.pub/261017032345-39829a9b12488f22886ff0ceaa7c717a/jpg/page_1_thumb_large.jpg" }, { url: "https://issuu.com/smokesignal", label: "Sep '26 issue", img: "https://image.isu.pub/260911201215-e53dc5de1b92260ebe44cbae02f4dd14/jpg/page_1_thumb_large.jpg" }, { url: "https://issuu.com/smokesignal", label: "Aug '26 issue", img: "https://image.isu.pub/260814074004-a46e07a323cc22a91109bf8bf065412d/jpg/page_1_thumb_large.jpg" } ] }
     ]}
   ],
 
@@ -518,8 +526,15 @@ $("#projectList").addEventListener("click", e => {
   b.textContent = open ? "close ↑" : "view project →";
 });
 
+const TILE_ICONS = {
+  ig: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor"/></svg>`,
+  news: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h13v14H6a2 2 0 0 1-2-2z"/><path d="M17 9h3v8a2 2 0 0 1-2 2"/><path d="M7 9h7M7 12h7M7 15h4"/></svg>`
+};
+const tile = g => g.url
+  ? `<a class="ltile${g.fit === "contain" ? " contain" : ""}" href="${esc(g.url)}" target="_blank" rel="noopener">${g.img ? `<img src="${esc(g.img)}" alt="" loading="lazy"${g.pos ? ` style="object-position:${esc(g.pos)}"` : ""} onerror="this.remove()">` : `<span class="lt-ico">${TILE_ICONS[g.icon] || ""}</span>`}<span class="lt-label">${esc(g.label)} ↗</span></a>`
+  : `<img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy" onerror="this.remove()">`;
 $("#expList").innerHTML = SITE.experience.map(g => g.chips ? `<div class="xgroup"><h4>${esc(g.group)}</h4><div class="wins">${g.chips.map(c => `<span class="chip">${esc(c)}</span>`).join("")}</div></div>` : `<div class="xgroup"><h4>${esc(g.group)}</h4><ul class="list">` +
-  g.items.map(i => `<li><b>${esc(i.role)}</b>${i.when ? `<span class="when mono">${esc(i.when)}</span>` : ""}<span class="sub">${esc(i.org)}</span>${i.note ? `<span class="note">${esc(i.note)}${(i.links || []).map(l => ` <a class="mlink" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join(" ·")}</span>` : ""}${i.gallery ? `<div class="gallery sm">${i.gallery.map(g => `<img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy" onerror="this.remove()">`).join("")}</div>` : ""}</li>`).join("") + `</ul></div>`).join("");
+  g.items.map(i => `<li><b>${esc(i.role)}</b>${i.when ? `<span class="when mono">${esc(i.when)}</span>` : ""}<span class="sub">${esc(i.org)}</span>${i.note ? `<span class="note">${esc(i.note)}${(i.links || []).map(l => ` <a class="mlink" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join(" ·")}</span>` : ""}${i.gallery ? `<div class="gallery sm">${i.gallery.map(tile).join("")}</div>` : ""}</li>`).join("") + `</ul></div>`).join("");
 $("#moreList").innerHTML = SITE.more.map(m => `<li>${m.link ? `<a href="${esc(m.link)}" target="_blank" rel="noopener"><b>${esc(m.title)} ↗</b></a>` : `<b>${esc(m.title)}</b>`}<span>${esc(m.short)}${(m.also || []).map(a => ` <a class="mlink" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.label)} ↗</a>`).join(" ·")}</span><span class="mono">${esc(m.year)}</span>${m.gallery ? `<div class="gallery sm">${m.gallery.map(g => `<img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy" onerror="this.remove()">`).join("")}</div>` : ""}</li>`).join("");
 $("#interests").innerHTML = SITE.interests.map(t => `<span class="chip">${esc(t)}</span>`).join("");
 
@@ -531,7 +546,7 @@ lb.className = "lightbox";
 lb.innerHTML = `<figure><img alt=""><figcaption></figcaption></figure>`;
 document.body.append(lb);
 document.addEventListener("click", e => {
-  const img = e.target.closest(".photo")?.querySelector("img") || e.target.closest(".gallery img");
+  const img = e.target.closest(".photo")?.querySelector("img") || e.target.closest(".gallery > img");
   if (!img) return;
   lb.querySelector("img").src = img.src;
   lb.querySelector("figcaption").textContent = img.alt;
