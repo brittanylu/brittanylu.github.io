@@ -106,28 +106,30 @@ main{display:grid;gap:20px;padding-block:32px 40px}
 .a-ball{transform-origin:31px 54px}.a-shadow{transform-origin:31px 59px}.a-swing{transform-origin:32px 32px}.a-nod{transform-origin:32px 44px}
 .a-blink{transform-origin:32px 23px}.a-spin{transform-origin:32px 33px}.a-arm{transform-origin:23px 47px}.a-claw{transform-origin:40px 17px}
 .a-spark{transform-box:fill-box!important;transform-origin:center}
-@keyframes ico-bounce{0%,100%{transform:translateY(0) scale(1,1)}35%{transform:translateY(-12px) scale(.96,1.04)}60%{transform:translateY(0) scale(1.1,.88)}75%{transform:translateY(-4px)}}
-@keyframes ico-shadow{0%,100%,60%{transform:scale(1);opacity:1}35%{transform:scale(.6);opacity:.5}}
-@keyframes ico-swing{0%,100%{transform:rotate(0)}25%{transform:rotate(-16deg)}60%{transform:rotate(10deg)}}
-@keyframes ico-nod{0%,100%{transform:rotate(0)}30%{transform:rotate(-9deg)}65%{transform:rotate(7deg)}}
-@keyframes ico-pulse{0%,100%{opacity:1}50%{opacity:.15}}
-@keyframes ico-alert{0%,100%{transform:translateY(0) scale(1)}30%{transform:translateY(-4px) scale(1.15)}50%{transform:translateY(0) scale(1)}70%{transform:translateY(-2px) scale(1.08)}}
+@keyframes ico-bounce{0%,100%{transform:translateY(0) scale(1,1)}40%{transform:translateY(-6px)}62%{transform:translateY(0) scale(1.04,.96)}}
+@keyframes ico-shadow{0%,62%,100%{transform:scale(1);opacity:1}40%{transform:scale(.8);opacity:.6}}
+@keyframes ico-swing{0%,100%{transform:rotate(0)}30%{transform:rotate(-8deg)}70%{transform:rotate(5deg)}}
+@keyframes ico-nod{0%,100%{transform:rotate(0)}35%{transform:rotate(-5deg)}70%{transform:rotate(4deg)}}
+@keyframes ico-pulse{0%,100%{opacity:1}50%{opacity:.45}}
+@keyframes ico-alert{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-2px) scale(1.07)}}
 @keyframes ico-spin{to{transform:rotate(360deg)}}
-@keyframes ico-reach{0%,100%{transform:rotate(0)}50%{transform:rotate(-14deg)}}
-@keyframes ico-grab{0%,40%,100%{transform:rotate(0)}55%,80%{transform:rotate(18deg)}}
-@keyframes ico-twinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.5) rotate(90deg)}}
-:is(.proj:hover,.thumb.ico.play) .a-ball{animation:ico-bounce .8s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-shadow{animation:ico-shadow .8s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-swing{animation:ico-swing 1.1s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-nod{animation:ico-nod 1s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-pulse{animation:ico-pulse .9s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-pulse.d2{animation-delay:.3s}
-:is(.proj:hover,.thumb.ico.play) .a-blink{animation:ico-alert 1s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-spin{animation:ico-spin 2.4s linear infinite}
-:is(.proj:hover,.thumb.ico.play) .a-arm{animation:ico-reach 1.4s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-claw{animation:ico-grab 1.4s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-spark{animation:ico-twinkle 1.2s ease-in-out infinite}
-@media (prefers-reduced-motion:reduce){.thumb.ico svg *{animation:none!important}}
+@keyframes ico-reach{0%,100%{transform:rotate(0)}50%{transform:rotate(-8deg)}}
+@keyframes ico-grab{0%,45%,100%{transform:rotate(0)}60%,85%{transform:rotate(12deg)}}
+@keyframes ico-twinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.2) rotate(45deg)}}
+:is(.proj:hover,.thumb.ico.play) .a-ball{animation:ico-bounce 1.6s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-shadow{animation:ico-shadow 1.6s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-swing{animation:ico-swing 2.4s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-nod{animation:ico-nod 2.2s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-pulse{animation:ico-pulse 2s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-pulse.d2{animation-delay:.5s}
+:is(.proj:hover,.thumb.ico.play) .a-blink{animation:ico-alert 2s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-spin{animation:ico-spin 6s linear infinite}
+:is(.proj:hover,.thumb.ico.play) .a-arm{animation:ico-reach 2.8s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-claw{animation:ico-grab 2.8s ease-in-out infinite}
+:is(.proj:hover,.thumb.ico.play) .a-spark{animation:ico-twinkle 2.4s ease-in-out infinite}
+.thumb .say{position:absolute;top:10px;left:10px;font:400 11px var(--mono);color:var(--accent);background:#fff;border:1.5px solid var(--butter);border-radius:999px;padding:2px 8px;opacity:0;transform:translateY(6px) scale(.85);transform-origin:left bottom;transition:opacity .5s ease,transform .6s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+:is(.proj:hover,.thumb.ico.play) .say{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.thumb.ico svg *{animation:none!important}.thumb .say{transition:none}}
 .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .gallery > img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--card);cursor:zoom-in;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
 .gallery > img:hover{transform:translateY(-4px) rotate(-1deg)}
@@ -334,7 +336,7 @@ const SITE = {
       links: [ { label: "watch the video ↗", url: "https://www.loom.com/share/806638d7227d4dca9a98aafe141fbf52" } ], image: ""
     },
     {
-      title: "HerdNet", icon: "cow", year: "2026", kind: "AI · Social Impact", win: ["Top 10 of 860", "South Sudan"],
+      title: "HerdNet", icon: "cow", say: "mooooo", year: "2026", kind: "AI · Social Impact", win: ["Top 10 of 860", "South Sudan"],
       short: "Using satellite imagery and AI to warn herders in South Sudan before cattle herds collide.",
       thumb: "UN",
       story: [
@@ -528,7 +530,7 @@ $("#projectList").innerHTML = SITE.projects.map((p, i) => {
   const hasMore = p.story.length || p.stats.length || p.links.length || p.todo;
   return `
   <article class="proj">
-    ${p.icon ? `<div class="thumb ico" data-ico="${esc(p.icon)}" aria-hidden="true">${PROJ_ICONS[p.icon] || ""}</div>` : `<div class="thumb">${p.image ? `<img src="${esc(p.image)}" alt="">` : `<canvas data-seed="${esc(p.title)}" aria-hidden="true"></canvas><b>${esc(p.thumb)}</b>`}</div>`}
+    ${p.icon ? `<div class="thumb ico" data-ico="${esc(p.icon)}" aria-hidden="true">${PROJ_ICONS[p.icon] || ""}${p.say ? `<span class="say">${esc(p.say)}</span>` : ""}</div>` : `<div class="thumb">${p.image ? `<img src="${esc(p.image)}" alt="">` : `<canvas data-seed="${esc(p.title)}" aria-hidden="true"></canvas><b>${esc(p.thumb)}</b>`}</div>`}
     <div>
       <div class="pline"><span class="mono">${String(i + 1).padStart(2, "0")} · ${esc(p.year)} · ${esc(p.kind)}</span><span class="wins">${[].concat(p.win || []).map((w, k) => `<span class="chip${k ? "" : " win"}">${k ? "" : "✦ "}${esc(w)}</span>`).join("")}</span></div>
       <h3>${esc(p.title)}</h3>
@@ -572,7 +574,7 @@ $("#track").innerHTML = SITE.photos.map(p => photo(p)).join("") + SITE.photos.ma
 const icoIO = new IntersectionObserver(es => es.forEach(e => {
   if (!e.isIntersecting) return;
   e.target.classList.add("play");
-  setTimeout(() => e.target.classList.remove("play"), 1800);
+  setTimeout(() => e.target.classList.remove("play"), 3200);
   icoIO.unobserve(e.target);
 }), { threshold: .6 });
 document.querySelectorAll(".thumb.ico").forEach(t => icoIO.observe(t));
