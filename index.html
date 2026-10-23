@@ -99,6 +99,12 @@ main{display:grid;gap:20px;padding-block:32px 40px}
 .thumb{position:relative;aspect-ratio:1/1;max-width:100%;border-radius:14px;overflow:hidden;background:var(--card);align-self:start}
 .thumb canvas,.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .thumb b{position:absolute;left:12px;bottom:10px;font-family:var(--serif);font-size:20px;color:var(--fg);font-weight:400;letter-spacing:-.02em}
+.thumb.ico{display:grid;place-items:center;background-color:var(--wash);background-image:radial-gradient(var(--speck) 1px,transparent 1.5px);background-size:12px 12px;border:1.5px solid var(--butter)}
+.thumb.ico svg{width:64%;height:64%;color:var(--fg);transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
+.proj:hover .thumb.ico svg{transform:rotate(-6deg) scale(1.07)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--card);cursor:zoom-in;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+.gallery img:hover{transform:translateY(-4px) rotate(-1deg)}
 .proj h3{font-family:var(--serif);font-size:19px;font-weight:400;letter-spacing:-.01em;margin:0 0 6px}
 .meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
 .pline{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:8px}
@@ -280,63 +286,68 @@ const SITE = {
 
   projects: [
     {
-      title: "Chain of Custody", year: "2026", kind: "AI · Enterprise", win: ["1st of 30 teams", "Egoist AI Ideathon", "YC S26"],
+      title: "Chain of Custody", icon: "chain", year: "2026", kind: "AI · Enterprise", win: ["1st of 30 teams", "Egoist AI Ideathon", "YC S26"],
       short: "A shared incident-response tool where people and AI agents work on one problem together.",
       thumb: "1st",
       story: [
         "Built for the AI Passport Ideathon. The hard part was access, so I designed scoped permissions that keep each agent to only what it needs. It won 1st of 30 teams and got me a founder's associate interview."
       ],
       stats: [],
-      links: [ { label: "watch the video ↗", url: "https://www.loom.com/share/806638d7227d4dca9a98aafe141fbf52" } ], image: "projects/chain-of-custody.jpg"
+      links: [ { label: "watch the video ↗", url: "https://www.loom.com/share/806638d7227d4dca9a98aafe141fbf52" } ], image: ""
     },
     {
-      title: "HerdNet", year: "2026", kind: "AI · Social Impact", win: ["Top 10 of 860", "South Sudan"],
+      title: "HerdNet", icon: "cow", year: "2026", kind: "AI · Social Impact", win: ["Top 10 of 860", "South Sudan"],
       short: "Using satellite imagery and AI to warn herders in South Sudan before cattle herds collide.",
       thumb: "UN",
       story: [
         "When herds run into each other over land and water, it can turn violent. I built HerdNet with the United Nations: it uses satellite data and AI to predict the routes of 12 million cattle across South Sudan and sends alerts to herders' basic phones so they can reroute first. I designed it to be handed off to South Sudan's Ministry of Agriculture, and the UN picked my proposal out of 170 teams."
       ],
       stats: [ { value: "$8,670", label: "a year to run the pilot" } ],
-      links: [ { label: "see the deck ↗", url: "https://canva.link/5cbwp71lsiw68wd" } ], image: "https://images.unsplash.com/photo-1713289590437-65e4db863617?w=400&h=400&fit=crop&q=80"
+      links: [ { label: "see the deck ↗", url: "https://canva.link/5cbwp71lsiw68wd" } ], image: ""
     },
     {
-      title: "HUGO", year: "2026", kind: "Startup · Safety", win: ["Top 10", "Berkeley YBV", "Stanford pitch comp"],
+      title: "HUGO", icon: "stadium", year: "2026", kind: "Startup · Safety", win: ["Top 10", "Berkeley YBV", "Stanford pitch comp"],
       short: "Crowd safety for stadiums that spots dangerous congestion before it becomes a crisis.",
       thumb: "Top 10",
       story: [
         "I combined thermal imaging, 4K video and edge AI into a SaaS business plan, with revenue projected to reach $5.6M by year 3. It made the top 10 out of thousands of applicants at Berkeley YBV, and I pitched it to real VCs at Stanford. Through The Knowledge Society, I started building a physical prototype."
       ],
       stats: [],
-      links: [], image: "https://images.unsplash.com/photo-1782355341395-78f9a62428ef?w=400&h=400&fit=crop&q=80"
+      links: [], image: ""
     },
     {
-      title: "Chase Center: DUBS", year: "2025", kind: "Strategy · Sports", win: ["4th worldwide", "DECA ICDC", "Top 2%"],
+      title: "Chase Center: DUBS", icon: "ball", year: "2025", kind: "Strategy · Sports", win: ["4th worldwide", "DECA ICDC", "Top 2%"],
       short: "A three-year AI plan for the Golden State Warriors' arena.",
       thumb: "4th",
       story: [
         "I ran surveys and focus groups, interviewed industry experts, worked with a sports PR company and an AI startup, and read 300 reviews to find what bugs guests and staff. It took thousands of cold emails and neon yellow dress pants, and it placed 4th in the world (top 2%)."
       ],
       stats: [ { value: "$11M", label: "added revenue a year" } ],
-      links: [ { label: "read the report ↗", url: "https://canva.link/chase-center-business-plan-brittany" } ], image: "projects/chase-center.jpg"
+      links: [ { label: "read the report ↗", url: "https://canva.link/chase-center-business-plan-brittany" } ], image: ""
     },
     {
-      title: "Cell Therapy Designer", year: "2025", kind: "Biotech · Product", win: ["The Knowledge Society", "10-month accelerator · ~15% acceptance"],
+      title: "Cell Therapy Designer", icon: "cell", year: "2025", kind: "Biotech · Product", win: ["The Knowledge Society", "10-month accelerator · ~15% acceptance"],
       short: "A mobile app prototype for designing logic-gated CAR-T and CAR-NK cancer therapies.",
       thumb: "35",
       story: [
         "Logic-gated cell therapies only attack cells that match a specific combination of targets. It's a cool idea, but hard to picture. I built a mobile prototype with drag-and-drop logic blocks, adjustable biological parameters and a simulation engine, and delivered the demo as part of a learning plan for 35 students. I also published a blog on logic-gated CAR/NK cells."
       ],
       stats: [],
-      links: [ { label: "watch the demo ↗", url: "https://www.loom.com/share/94037472c3af4567a4d227f86defa9c8" }, { label: "figma ↗", url: "https://www.figma.com/make/0skUpGf3ZRGzsUN1n7u7zg/Immune-Studio-UX-Wireframes" } ], image: "projects/immune-studio.jpg"
+      links: [ { label: "watch the demo ↗", url: "https://www.loom.com/share/94037472c3af4567a4d227f86defa9c8" }, { label: "figma ↗", url: "https://www.figma.com/make/0skUpGf3ZRGzsUN1n7u7zg/Immune-Studio-UX-Wireframes" } ], image: ""
     },
     {
-      title: "Robot Arm", year: "2025", kind: "Robotics · AI", win: ["Innovator Semifinalist", "Conrad Challenge"],
+      title: "Robot Arm", icon: "arm", year: "2025", kind: "Robotics · AI", win: ["Innovator Semifinalist", "Conrad Challenge"],
       short: "A robot arm you teach by showing it what to do.",
       thumb: "Semis",
       story: [
         "When the arm sees something new, it asks you to show it the task on your phone camera. Pose estimation maps your hand onto the arm, and imitation learning lets it repeat the task next time. My team and I designed it for assisted living, so older users don't have to keep bending down."
       ],
-      stats: [], links: [], image: "projects/robot-arm.jpg"
+      stats: [], links: [], image: "",
+      gallery: [
+        { src: "projects/robot-render.jpg", alt: "Little Low Helper render", pos: "0% 50%" },
+        { src: "projects/robot-cad.jpg", alt: "CAD model of the arm on a pole" },
+        { src: "projects/robot-build.jpg", alt: "The built arm next to a ruler" }
+      ]
     }
   ],
 
@@ -463,11 +474,19 @@ function draw(canvas, seed) {
   ctx.globalAlpha = 1;
 }
 
+const PROJ_ICONS = {
+  chain: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><g transform="translate(5 8) scale(2.1)" stroke-width="1.25"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g><path d="M50 7l1.8 4.2L56 13l-4.2 1.8L50 19l-1.8-4.2L44 13l4.2-1.8z" fill="var(--accent)" stroke="none"/></svg>`,
+  cow: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 21c-6 0-11-4-12-10 4 3 8 4 13 4M42 21c6 0 11-4 12-10-4 3-8 4-13 4"/><path d="M20 24c0-6 5-9 12-9s12 3 12 9v12c0 7-5 13-12 13s-12-6-12-13z" fill="#fff"/><ellipse cx="32" cy="42" rx="9" ry="6" fill="var(--butter)"/><circle cx="26.5" cy="29" r="1.4" fill="currentColor" stroke="none"/><circle cx="37.5" cy="29" r="1.4" fill="currentColor" stroke="none"/><circle cx="29" cy="42" r="1" fill="currentColor" stroke="none"/><circle cx="35" cy="42" r="1" fill="currentColor" stroke="none"/><path d="M47 12a6 6 0 0 1 6 6M47 6a12 12 0 0 1 12 12" stroke="var(--accent)"/></svg>`,
+  stadium: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 38v6c0 6 10.7 11 24 11s24-5 24-11v-6"/><ellipse cx="32" cy="38" rx="24" ry="11" fill="#fff"/><ellipse cx="32" cy="38" rx="12" ry="5" fill="var(--butter)"/><path d="M32 6l10 17H22z" fill="var(--accent)" stroke="var(--accent)"/><path d="M32 12v5" stroke="#fff"/><circle cx="32" cy="20" r="1" fill="#fff" stroke="none"/></svg>`,
+  ball: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="31" cy="34" r="20" fill="var(--butter)"/><path d="M31 14v40M11 34h40M17.5 19.5c6 5 6 24 0 29M44.5 19.5c-6 5-6 24 0 29"/><path d="M52 6l1.8 4.2L58 12l-4.2 1.8L52 18l-1.8-4.2L46 12l4.2-1.8z" fill="var(--accent)" stroke="none"/></svg>`,
+  cell: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="6" width="30" height="52" rx="7" fill="#fff"/><path d="M28 11h8"/><circle cx="32" cy="33" r="8" fill="var(--butter)"/><path d="M32 25v-5M32 41v5M24 33h-5M40 33h5"/><path d="M29.5 18l2.5 2 2.5-2M29.5 48l2.5-2 2.5 2M17 30.5l2 2.5-2 2.5M47 30.5l-2 2.5 2 2.5" stroke="var(--accent)"/></svg>`,
+  arm: `<svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 56h26"/><rect x="15" y="47" width="16" height="9" rx="2.5" fill="#fff"/><path d="M23 47l-4-19 21-11"/><circle cx="19" cy="28" r="4" fill="var(--butter)"/><circle cx="23" cy="47" r="0.1"/><path d="M40 17l6-6M40 17l8 3M46 11l5 1M48 20l3 4"/><circle cx="40" cy="17" r="3.5" fill="var(--butter)"/><path d="M52 34l1.5 3.5L57 39l-3.5 1.5L52 44l-1.5-3.5L47 39l3.5-1.5z" fill="var(--accent)" stroke="none"/></svg>`
+};
 $("#projectList").innerHTML = SITE.projects.map((p, i) => {
   const hasMore = p.story.length || p.stats.length || p.links.length || p.todo;
   return `
   <article class="proj">
-    <div class="thumb">${p.image ? `<img src="${esc(p.image)}" alt="">` : `<canvas data-seed="${esc(p.title)}" aria-hidden="true"></canvas><b>${esc(p.thumb)}</b>`}</div>
+    ${p.icon ? `<div class="thumb ico" aria-hidden="true">${PROJ_ICONS[p.icon] || ""}</div>` : `<div class="thumb">${p.image ? `<img src="${esc(p.image)}" alt="">` : `<canvas data-seed="${esc(p.title)}" aria-hidden="true"></canvas><b>${esc(p.thumb)}</b>`}</div>`}
     <div>
       <div class="pline"><span class="mono">${String(i + 1).padStart(2, "0")} · ${esc(p.year)} · ${esc(p.kind)}</span><span class="wins">${[].concat(p.win || []).map((w, k) => `<span class="chip${k ? "" : " win"}">${k ? "" : "✦ "}${esc(w)}</span>`).join("")}</span></div>
       <h3>${esc(p.title)}</h3>
@@ -475,6 +494,7 @@ $("#projectList").innerHTML = SITE.projects.map((p, i) => {
       ${hasMore ? `<button class="pill toggle" type="button" aria-expanded="false" aria-controls="more${i}">view project →</button>
       <div class="more" id="more${i}" hidden>
         ${p.story.map(s => `<p>${esc(s)}</p>`).join("")}
+        ${p.gallery ? `<div class="gallery">${p.gallery.map(g => `<img src="${esc(g.src)}" alt="${esc(g.alt)}" loading="lazy"${g.pos ? ` style="object-position:${esc(g.pos)}"` : ""} onerror="this.remove()">`).join("")}</div>` : ""}
         ${p.stats.length ? `<div class="stats">${p.stats.map(s => `<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("")}</div>` : ""}
         ${p.links.length ? `<div class="plinks">${p.links.map(l => `<a class="pill" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a>`).join("")}</div>` : ""}
         ${p.todo ? `<div class="todo">${esc(p.todo)}</div>` : ""}
@@ -502,8 +522,8 @@ const lb = document.createElement("div");
 lb.className = "lightbox";
 lb.innerHTML = `<figure><img alt=""><figcaption></figcaption></figure>`;
 document.body.append(lb);
-$("#track").addEventListener("click", e => {
-  const img = e.target.closest(".photo")?.querySelector("img");
+document.addEventListener("click", e => {
+  const img = e.target.closest(".photo")?.querySelector("img") || e.target.closest(".gallery img");
   if (!img) return;
   lb.querySelector("img").src = img.src;
   lb.querySelector("figcaption").textContent = img.alt;
