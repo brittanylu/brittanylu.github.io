@@ -116,19 +116,19 @@ main{display:grid;gap:20px;padding-block:32px 40px}
 @keyframes ico-reach{0%,100%{transform:rotate(0)}50%{transform:rotate(-8deg)}}
 @keyframes ico-grab{0%,45%,100%{transform:rotate(0)}60%,85%{transform:rotate(12deg)}}
 @keyframes ico-twinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.2) rotate(45deg)}}
-:is(.proj:hover,.thumb.ico.play) .a-ball{animation:ico-bounce 1.6s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-shadow{animation:ico-shadow 1.6s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-swing{animation:ico-swing 2.4s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-nod{animation:ico-nod 2.2s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-pulse{animation:ico-pulse 2s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-pulse.d2{animation-delay:.5s}
-:is(.proj:hover,.thumb.ico.play) .a-blink{animation:ico-alert 2s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-spin{animation:ico-spin 6s linear infinite}
-:is(.proj:hover,.thumb.ico.play) .a-arm{animation:ico-reach 2.8s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-claw{animation:ico-grab 2.8s ease-in-out infinite}
-:is(.proj:hover,.thumb.ico.play) .a-spark{animation:ico-twinkle 2.4s ease-in-out infinite}
-.thumb .say{position:absolute;top:10px;left:10px;font:400 11px var(--mono);color:var(--accent);background:#fff;border:1.5px solid var(--butter);border-radius:999px;padding:2px 8px;opacity:0;transform:translateY(6px) scale(.85);transform-origin:left bottom;transition:opacity .5s ease,transform .6s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
-:is(.proj:hover,.thumb.ico.play) .say{opacity:1;transform:none}
+.proj:hover .a-ball{animation:ico-bounce 1.6s ease-in-out infinite}
+.proj:hover .a-shadow{animation:ico-shadow 1.6s ease-in-out infinite}
+.proj:hover .a-swing{animation:ico-swing 2.4s ease-in-out infinite}
+.proj:hover .a-nod{animation:ico-nod 2.2s ease-in-out infinite}
+.proj:hover .a-pulse{animation:ico-pulse 2s ease-in-out infinite}
+.proj:hover .a-pulse.d2{animation-delay:.5s}
+.proj:hover .a-blink{animation:ico-alert 2s ease-in-out infinite}
+.proj:hover .a-spin{animation:ico-spin 6s linear infinite}
+.proj:hover .a-arm{animation:ico-reach 2.8s ease-in-out infinite}
+.proj:hover .a-claw{animation:ico-grab 2.8s ease-in-out infinite}
+.proj:hover .a-spark{animation:ico-twinkle 2.4s ease-in-out infinite}
+.thumb .say{position:absolute;top:10px;left:12px;font:400 12px var(--mono);color:var(--accent);opacity:0;transform:translateY(6px) scale(.85);transform-origin:left bottom;transition:opacity .5s ease,transform .6s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
+.proj:hover .say{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.thumb.ico svg *{animation:none!important}.thumb .say{transition:none}}
 .gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
 .gallery > img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;background:var(--card);cursor:zoom-in;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
@@ -570,14 +570,6 @@ $("#interests").innerHTML = SITE.interests.map(t => `<span class="chip">${esc(t)
 const photo = (p, hidden) => `<figure class="photo"${hidden ? ' aria-hidden="true"' : ""}><div class="img${p.src ? " has" : ""}">${p.src ? `<img src="${esc(p.src)}" alt="${esc(p.caption)}" loading="lazy" onerror="this.closest('figure').remove()">` : esc(p.caption)}</div>${p.src && p.caption ? `<figcaption>${esc(p.caption)}</figcaption>` : ""}</figure>`;
 $("#track").innerHTML = SITE.photos.map(p => photo(p)).join("") + SITE.photos.map(p => photo(p, true)).join("");
 // click a photo to pop it open
-// project icons do their little move once when they scroll into view
-const icoIO = new IntersectionObserver(es => es.forEach(e => {
-  if (!e.isIntersecting) return;
-  e.target.classList.add("play");
-  setTimeout(() => e.target.classList.remove("play"), 3200);
-  icoIO.unobserve(e.target);
-}), { threshold: .6 });
-document.querySelectorAll(".thumb.ico").forEach(t => icoIO.observe(t));
 const lb = document.createElement("div");
 lb.className = "lightbox";
 lb.innerHTML = `<figure><img alt=""><figcaption></figcaption></figure>`;
